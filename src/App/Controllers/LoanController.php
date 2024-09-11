@@ -11,7 +11,6 @@ class LoanController {
     }
 
     public function insert(Request $request, Response $response): Response{
-
         $body = $request->getParsedBody();
 
         $data = 'name: '.$body['name'] . PHP_EOL
@@ -21,8 +20,9 @@ class LoanController {
         . 'sex: ' . $body['sex'] . PHP_EOL
         . 'ktp_number: ' . $body['ktp_number'] . PHP_EOL
         . 'loan_period: ' . $body['loan_period'] . PHP_EOL;
-
-        $inserted = file_put_contents('loan-data.txt',$data);
+        
+        $file_loc = $_ENV["DATA_STORE_NAME"] ?? 'loan-datass.txt';
+        $inserted = file_put_contents($file_loc,$data);
 
         if ($inserted){ 
             $response->withStatus(200);
