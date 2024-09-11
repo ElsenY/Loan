@@ -9,7 +9,7 @@ Below describe how to run the application and the unit test
 
 # How to serve the app
 
-1. run `composer install`
+1. make sure you are in the project directory, then run `composer install`
 2. go to 'public' folder and run 'php -S localhost:[PORT] eg : `php -S localhost:8888`
 3. the application is served locally
 
