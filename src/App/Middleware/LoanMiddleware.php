@@ -6,8 +6,9 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Server\RequestHandlerInterface as RequestHandler;
 use Respect\Validation\Validator as v;
+use Slim\Psr7\Response as ResponseObject;
 
-class LoanMiddleware{
+class LoanMiddleWare {
 
     private $nameValidator;
     private $ktpValidator;
@@ -44,7 +45,7 @@ class LoanMiddleware{
 
         if (!$valid) {
             $validField = false;
-            $errormessage .= 'invalid loan_amount format! loan_amount must be between 1000 and 10000';
+            $errormessage .= 'invalid loan_amount format! loan_amount must be between 1000 and 10000' . PHP_EOL;
         }
 
         $valid = $this->loanPurposeValidator->validate($body['loan_purpose'] ?? null);
@@ -91,11 +92,9 @@ class LoanMiddleware{
             $validField = false;
             $errormessage .= 'invalid loan_period format! loan period must be a number' . PHP_EOL;
         }
-
-        $response = $handler->handle($request);
+        
         if (!$validField) {
-            $response = $response->withStatus(400);
-
+            $response = new ResponseObject();
             $payload = json_encode([
                 'error' => 'Invalid Field Format',
                 'message' => $errormessage,
@@ -105,7 +104,7 @@ class LoanMiddleware{
 
             return $response;
         }
-
+        
         return $handler->handle($request);
     }
 }
