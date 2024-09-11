@@ -4,8 +4,8 @@ Below describe how to run the application and the unit test
 
 # Prerequisites
 
-PHP installed
-composer installed
+1. PHP installed
+2. composer installed
 
 # How to serve the app
 
@@ -26,6 +26,7 @@ additionally can try to run `curl localhost:[PORT]` in your terminal, if you get
    - sex
    - ktp_number
    - loan_period
+3. upon successful call, there will be a text file created in public folder with the name 'loan-data.txt' containing the data
 
 # How to run the unit test
 
