@@ -21,7 +21,7 @@ class LoanController {
         . 'ktp_number: ' . $body['ktp_number'] . PHP_EOL
         . 'loan_period: ' . $body['loan_period'] . PHP_EOL;
         
-        $file_loc = $_ENV["DATA_STORE_NAME"] ?? 'loan-datass.txt';
+        $file_loc = $_ENV["DATA_STORE_NAME"] ?? 'loan-data.txt';
         $inserted = file_put_contents($file_loc,$data);
 
         if ($inserted){ 
