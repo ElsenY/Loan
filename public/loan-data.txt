@@ -1,7 +1,0 @@
-name: Add your name in the body
-loan_amount:10000
-loan_purpose: vacation
-date_of_birth: 301099
-sex: male
-ktp_number: 1231233010992312
-loan_period: 10
